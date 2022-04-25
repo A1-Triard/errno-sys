@@ -1,0 +1,19 @@
+[package]
+edition = "2021"
+rust-version = "1.59"
+name = "errno-sys"
+version = "0.0.1"
+authors = ["warlock <internalmike@gmail.com>"]
+description = "Raw FFI bindings to `errno` location."
+readme = "README.md"
+documentation = "https://docs.rs/errno-sys/"
+keywords = ["errno", "no_std", "unix", "linux"]
+categories = ["external-ffi-bindings", "os::unix-apis", "no-std"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/A1-Triard/errno-sys"
+
+[dependencies]
+libc = { version = "0.2.124", default-features = false }
+
+[build-dependencies]
+cc = "1.0.73"
