@@ -1,10 +1,12 @@
-name: Rust
+name: CI
 
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  schedule:
+  - cron: '0 0 * * *'
 
 env:
   CARGO_TERM_COLOR: always
@@ -26,11 +28,16 @@ jobs:
           triple: x86_64-apple-darwin
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v2
     - uses: actions-rs/toolchain@v1
       with:
         toolchain: ${{ matrix.rust }}
         override: true
+    - name: install cargo-outdated
+      uses: actions-rs/cargo@v1
+      with:
+        command: install
+        args: "--verbose --locked cargo-outdated"
+    - uses: actions/checkout@v2
     - name: build
       uses: actions-rs/cargo@v1
       with:
@@ -56,3 +63,8 @@ jobs:
     - name: ensure_no_std run
       run: "./ensure_no_std/target/${{ matrix.triple }}/release/ensure_no_std"
       if: "${{ matrix.triple != '' }}"
+    - name: outdated
+      uses: actions-rs/cargo@v1
+      with:
+        command: outdated
+        args: "--verbose --aggresssive --root-deps-only --exit-code 1"
