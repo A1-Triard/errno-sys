@@ -32,11 +32,6 @@ jobs:
       with:
         toolchain: ${{ matrix.rust }}
         override: true
-    - name: install cargo-outdated
-      uses: actions-rs/cargo@v1
-      with:
-        command: install
-        args: "--verbose --locked cargo-outdated"
     - uses: actions/checkout@v2
     - name: build
       uses: actions-rs/cargo@v1
