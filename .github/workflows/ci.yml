@@ -55,6 +55,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        rust: ["1.59", stable, beta, nightly]
         os: [ubuntu-latest, macOS-latest, windows-latest]
         target: [x86_64-unknown-linux-gnu, i686-unknown-linux-gnu, x86_64-apple-darwin]
         exclude:
@@ -62,11 +63,6 @@ jobs:
           target: x86_64-unknown-linux-gnu
         - os: macOS-latest
           target: x86_64-apple-darwin
-        include:
-        - rust: "1.59"
-        - rust: stable
-        - rust: beta
-        - rust: nightly
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions-rs/toolchain@v1
