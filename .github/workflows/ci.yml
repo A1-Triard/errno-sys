@@ -12,7 +12,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  main:
+  build:
     strategy:
       fail-fast: false
       matrix:
