@@ -78,4 +78,6 @@ jobs:
       if: "${{ matrix.os == 'macOS-latest' }}"
     - uses: actions/checkout@v2
     - run: "cargo build --verbose --target=${{ matrix.target }}"
+      env:
+        CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER: x86_64-unknown-linux-gnu-gcc
     - run: "cargo build --verbose --target=${{ matrix.target }} --release"
