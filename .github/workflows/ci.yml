@@ -63,7 +63,10 @@ jobs:
         - os: macOS-latest
           target: x86_64-apple-darwin
         include:
-        - rust: ["1.59", stable, beta, nightly]
+        - rust: "1.59"
+        - rust: stable
+        - rust: beta
+        - rust: nightly
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions-rs/toolchain@v1
