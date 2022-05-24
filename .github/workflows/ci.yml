@@ -12,7 +12,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
+  main:
     strategy:
       fail-fast: false
       matrix:
@@ -51,7 +51,7 @@ jobs:
     - run: "cargo +nightly build --verbose -Z build-std=core,panic_abort --target ${{ matrix.triple }} --release"
       working-directory: ensure_no_std
     - run: "./ensure_no_std/target/${{ matrix.triple }}/release/ensure_no_std"
-  - crosscompilation:
+  crosscompilation:
     strategy:
       fail-fast: false
       matrix:
