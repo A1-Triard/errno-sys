@@ -18,4 +18,5 @@ libc = { version = "0.2.124", default-features = false }
 [build-dependencies]
 cc = "1.0.73"
 
+[badges]
 maintenance = { status = "passively-maintained" }
