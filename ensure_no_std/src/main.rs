@@ -21,7 +21,6 @@ mod no_std {
     extern fn rust_eh_personality() { }
 }
 
-
 use errno_sys::*;
 use libc::EINVAL;
 
