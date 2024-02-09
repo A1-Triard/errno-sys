@@ -72,7 +72,7 @@ jobs:
         toolchain: ${{ matrix.rust }}
         override: true
     - run: "rustup target add ${{ matrix.target }}"
-    - run: "sudo apt-get install -y gcc-multilib"
+    - run: "sudo apt-get update && sudo apt-get install -y gcc-multilib"
       if: "${{ matrix.os == 'ubuntu-latest' }}"
     - run: "brew tap SergioBenitez/osxct"
       if: "${{ matrix.os == 'macOS-latest' }}"
